@@ -1,0 +1,334 @@
+/* ============================================================
+   PORTFOLIO PROFESSIONNEL - AMSATOU DIABEL (ESTM 2026)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
+
+:root {
+    --primary: #6366f1; /* Indigo moderne */
+    --secondary: #a855f7; /* Violet royal */
+    --accent: #06b6d4; /* Cyan pour les détails */
+    --bg-body: #0f172a; /* Fond nuit */
+    --bg-card: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+    --text-white: #f8fafc;
+    --text-gray: #94a3b8;
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none !important; /* On cache le curseur pour le JS */
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-white);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* --- CURSEURS (JS) --- */
+#cursor {
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+#cursor-follower {
+    width: 35px;
+    height: 35px;
+    border: 2px solid var(--secondary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s;
+}
+
+/* --- BARRE DE NAVIGATION --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 8%;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar ul li { margin-left: 35px; }
+
+.navbar ul li a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    opacity: 0.8;
+}
+
+.navbar ul li a:hover, .navbar ul li a.active {
+    opacity: 1;
+    color: var(--primary);
+}
+
+/* --- MISE EN PAGE GLOBALE DES SECTIONS --- */
+.container {
+    padding: 120px 8% 60px;
+    min-height: 100vh;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- SECTION PRÉSENTATION (INDEX) --- */
+.presentation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 150px 10% 100px;
+    gap: 50px;
+}
+
+.presentation-text { flex: 1.2; text-align: left; }
+
+.presentation-text h1 { text-align: left; margin-bottom: 10px; }
+
+.presentation-text h1 span { color: var(--secondary); }
+
+.presentation-text p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    margin-bottom: 20px;
+    max-width: 600px;
+}
+
+.presentation-img { flex: 0.8; position: relative; }
+
+.presentation-img img {
+    width: 100%;
+    max-width: 380px;
+    border-radius: 50px;
+    border: 2px solid var(--border);
+    transition: var(--transition);
+    animation: float 6s ease-in-out infinite;
+}
+
+/* --- ALIGNEMENT HORIZONTAL (COMPÉTENCES & EXPÉRIENCES) --- */
+.grid, .container > div:not(.navbar):not(.footer) {
+    display: flex;
+    flex-direction: row; /* Horizontal */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.projects {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* --- CARTES GLASSMORPHISM --- */
+.card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 24px;
+    transition: var(--transition);
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    text-align: left;
+}
+
+.card:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: var(--primary);
+    font-size: 1.4rem;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+/* --- SECTION CONTACT & FORMULAIRES HORIZONTAUX --- */
+.forms-wrapper {
+    display: flex;
+    flex-direction: row; /* Alignement horizontal */
+    align-items: stretch;
+    justify-content: center;
+    gap: 25px;
+}
+
+.form-card {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px 18px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: white;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+button {
+    padding: 12px 25px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
+}
+
+/* --- BOUTON CV --- */
+.btn-cv {
+    display: inline-block;
+    padding: 15px 35px;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.btn-cv:hover {
+    background: var(--primary);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+/* --- RÉSEAUX SOCIAUX --- */
+.socials { margin-top: 30px; }
+.socials a {
+    color: var(--text-white);
+    font-size: 1.5rem;
+    margin-right: 20px;
+    opacity: 0.6;
+    transition: var(--transition);
+}
+.socials a:hover { opacity: 1; color: var(--accent); }
+
+/* --- FOOTER --- */
+.footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .presentation { flex-direction: column; text-align: center; }
+    .presentation-text { text-align: center; }
+    .presentation-text h1 { text-align: center; }
+    .forms-wrapper, .grid, .projects { flex-direction: column; align-items: center; }
+    .card { width: 100%; max-width: 500px; }
+    .navbar ul { display: none; } /* On pourrait ajouter un menu burger ici */
+}
+@media (min-width: 1025px) {
+    .menu-toggle { display: none; }
+}
+
+@media (max-width: 1024px) {
+    nav ul {
+        display: none; /* Caché par défaut sur mobile */
+        /* ... le reste de tes styles de menu mobile */
+    }
+    nav ul.mobile-open {
+        display: flex; /* S'affiche quand la classe est ajoutée par le JS */
+    }
+}
